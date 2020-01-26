@@ -1,0 +1,12 @@
+server:
+  port: 8000
+#spring:
+#  application.name: testportalv2-api
+#  datasource:
+#    url: jdbc:mysql://${DB_HOST:localhost:3306}/webshop?useSSL=true&characterEncoding=UTF-8&createDatabaseIfNotExist=true&useTimezone=true&serverTimezone=Etc/GMT-0
+#    username: root
+#    password: 1111
+#    driver-class-name: com.mysql.jdbc.Driver
+#  liquibase:
+#    change-log: classpath:db-changelog.yml
+#liquibase:
