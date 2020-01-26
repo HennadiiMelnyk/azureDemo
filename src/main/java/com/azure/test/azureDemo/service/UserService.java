@@ -2,6 +2,7 @@ package com.azure.test.azureDemo.service;
 
 import com.azure.test.azureDemo.domain.User;
 
+import javax.jws.soap.SOAPBinding;
 import java.util.List;
 
 /**
@@ -24,6 +25,13 @@ public interface UserService {
      * @return
      */
     String getPasswordByEmail(String email);
+
+    /**
+     *
+     * @param user
+     * @return
+     */
+    User createUser(User user);
 
 
 }

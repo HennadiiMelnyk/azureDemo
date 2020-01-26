@@ -1,4 +1,4 @@
 databaseChangeLog:
   - include:
-      file: db-changelog/AzureDemo-1.yml
+      file: db/changelog/AzureDemo-1.yml
       relativeToChangelogFile: true

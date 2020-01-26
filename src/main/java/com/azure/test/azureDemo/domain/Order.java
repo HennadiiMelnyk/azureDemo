@@ -17,11 +17,14 @@ public class Order extends AbstractEntity {
     private String details;
     @Column(name = "time")
     private LocalDateTime time;
-    // FIXME: 1/25/2020 add foreign key
 
-    private User customer;
+    private int customer;
 
-    public Order(String id, OrderStatus orderStatus, String details, LocalDateTime time, User customer) {
+    public Order() {
+    }
+
+
+    public Order(String id, OrderStatus orderStatus, String details, LocalDateTime time, int customer) {
         super(id);
         this.orderStatus = orderStatus;
         this.details = details;
@@ -29,8 +32,14 @@ public class Order extends AbstractEntity {
         this.customer = customer;
     }
 
-    public Order() {
+    public int getCustomer() {
+        return customer;
     }
+
+    public void setCustomer(int customer) {
+        this.customer = customer;
+    }
+
 
     public OrderStatus getOrderStatus() {
         return orderStatus;
@@ -56,13 +65,6 @@ public class Order extends AbstractEntity {
         this.time = time;
     }
 
-    public User getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(User customer) {
-        this.customer = customer;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -73,7 +75,7 @@ public class Order extends AbstractEntity {
         return orderStatus == order.orderStatus &&
                 details.equals(order.details) &&
                 time.equals(order.time) &&
-                customer.equals(order.customer);
+                customer == order.customer;
     }
 
     @Override
