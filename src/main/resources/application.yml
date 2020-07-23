@@ -1,18 +1,20 @@
 spring:
   application.name: azureDemo
   datasource:
-    url: jdbc:mysql://${DB_HOST:localhost:3306}/testAzureDb?useSSL=true&characterEncoding=UTF-8&createDatabaseIfNotExist=true
-    username: ${MYSQL_USER:root}
-    password: ${DB_PASSWORD:1111}
-    driver-class-name: com.mysql.jdbc.Driver
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/testAzureDb
+    username: postgres
+    password: 1111
+    driver-class-name: org.postgresql.Driver
   jpa:
-    show-sql: false
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQL5Dialect
+        dialect: org.hibernate.dialect.PostgreSQL9Dialect
+
     hibernate:
       jdbc:
-        batch_size: 20
+        lob:
+          non_contextual_creation: true
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
   liquibase:

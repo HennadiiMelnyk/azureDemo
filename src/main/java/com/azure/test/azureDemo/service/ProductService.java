@@ -18,7 +18,7 @@ public interface ProductService {
     /**
      * @param product
      */
-    Product save(Product product);
+    Product addProduct(Product product);
 
     /**
      * @param id
@@ -28,13 +28,21 @@ public interface ProductService {
     Product findById(String id) throws ResourceNotFoundException;
 
     /**
-     * @param product
-     */
-    void delete(Product product);
-
-    /**
-     *
      * @param id
      */
     void deleteById(String id);
+
+    /**
+     * @param id
+     * @param newProductEntity
+     * @return
+     */
+    Product updateProduct(String id, Product newProductEntity);
+
+    /**
+     *  Check existence of product entity
+     * @param productId
+     * @return
+     */
+    boolean exists(String productId);
 }
