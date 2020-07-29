@@ -5,6 +5,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>azuredemo-api</module>
+        <module>azuredemo-ui</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
