@@ -1,6 +1,8 @@
 package com.azure.test.azureDemo.service.impl;
 
+import com.azure.test.azureDemo.domain.Role;
 import com.azure.test.azureDemo.domain.User;
+import com.azure.test.azureDemo.domain.UserStatus;
 import com.azure.test.azureDemo.exception.ResourceNotFoundException;
 import com.azure.test.azureDemo.persistence.UserRepository;
 import com.azure.test.azureDemo.service.UserService;
@@ -21,7 +23,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> getAllUsers() {
-        return userRepository.findAll();
+        List<User> ls =userRepository.findAll();
+        return ls;
     }
 
     @Override
@@ -30,7 +33,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User createUser(User user) {
-        return userRepository.save(user);
+    public User createUser(User userEntity) {
+        userEntity.setRole(Role.valueOf(String.valueOf(Role.User)));
+        userEntity.setStatus(UserStatus.Active);
+        return userRepository.save(userEntity);
+    }
+
+    @Override
+    public User getUserById(String id) {
+        return userRepository.findById(id).orElseThrow(() ->
+                new ResourceNotFoundException("User doesn't exist with id: " + id));
     }
 }

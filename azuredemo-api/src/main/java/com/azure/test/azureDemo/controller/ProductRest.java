@@ -54,17 +54,17 @@ public class ProductRest {
 
     /**
      * Find product by identifier
+     *
      * @param productId
      */
     @GetMapping(value = "/products/{productId}")
-   // @ResponseStatus(HttpStatus.OK)
+    //@ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Product> getProduct(@PathVariable @Pattern(regexp = RegexConstants.UUID_ID, message = ErrorMessage.PRODUCT_ID) String productId) {
         Product productEntity = productService.findById(productId);
         return ResponseEntity.ok(productEntity);
     }
 
     /**
-     *
      * @param productId
      */
     @DeleteMapping("/products/{productId}")
@@ -73,7 +73,6 @@ public class ProductRest {
     }
 
     /**
-     *
      * @param productId
      * @param newProductEntity
      * @return

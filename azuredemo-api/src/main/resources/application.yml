@@ -10,6 +10,7 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQL9Dialect
+        physical_naming_strategy: io.micronaut.data.hibernate.naming.DefaultPhysicalNamingStrategy
 
     hibernate:
       jdbc:

@@ -1,0 +1,94 @@
+databaseChangeLog:
+  - changeSet:
+      id: 25_12_2019_1_Add_products_table
+      author: hennadii.melnyk@gmail.com
+      changes:
+        - createTable:
+              tableName: products
+              columns:
+                - column:
+                    name: id
+                    type: VARCHAR(36)
+                    constraints:
+                      primaryKey: true
+                      nullable: false
+                - column:
+                    name: name
+                    type: VARCHAR(20)
+                    constraints:
+                      nullable: false
+                - column:
+                    name: price
+                    type: VARCHAR(20)
+                    constraints:
+                      nullable: false
+                - column:
+                    name: color
+                    type: VARCHAR(20)
+                    constraints:
+                      nullable: false
+                - column:
+                    name: description
+                    type: VARCHAR(250)
+                    constraints:
+                      nullable: false
+  - changeSet:
+      id: 7_27_2020_1_Add_Users_table
+      author: hennadii.melnyk@gmail.com
+      changes:
+        - sql:
+            sql: CREATE TYPE roles as ENUM('Admin','User')
+        - sql:
+            sql: CREATE TYPE statuses as ENUM('Active', 'InActive')
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: VARCHAR(36)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: first_name
+                  type: VARCHAR(36)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_name
+                  type: VARCHAR(36)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
+                  type: VARCHAR(36)
+                  constraints:
+                    unique: true
+                    nullable: false
+              - column:
+                  name: password
+                  type: VARCHAR(36)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: phone
+                  type: VARCHAR(16)
+                  constraints:
+                    unique: true
+              - column:
+                  name: role
+                  type: roles
+                  defaultValue: User
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: statuses
+                  defaultValue: Active
+                  constraints:
+                    nullable: false
+
+
+
+
+

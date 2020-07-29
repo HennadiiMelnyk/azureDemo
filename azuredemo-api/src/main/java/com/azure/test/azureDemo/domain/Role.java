@@ -5,8 +5,8 @@ package com.azure.test.azureDemo.domain;
  */
 public enum Role {
 
-    ADMIN("Admin"),
-    USER("User");
+    Admin("Admin"),
+    User("User");
 
     private final String name;
 

@@ -2,7 +2,7 @@ package com.azure.test.azureDemo.service;
 
 import com.azure.test.azureDemo.domain.User;
 
-import javax.jws.soap.SOAPBinding;
+
 import java.util.List;
 
 /**
@@ -32,6 +32,13 @@ public interface UserService {
      * @return
      */
     User createUser(User user);
+
+    /**
+     *
+     * @param id
+     * @return
+     */
+    User getUserById(String id);
 
 
 }

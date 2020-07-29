@@ -2,8 +2,8 @@ package com.azure.test.azureDemo.domain;
 
 public enum UserStatus {
 
-    ACTIVE("Active"),
-    INACTIVE("InActive");
+    Active("Active"),
+    InActive("InActive");
 
     private final String name;
 

@@ -47,18 +47,22 @@ public class ProductServiceImpl implements ProductService {
         } else {
             throw new ResourceNotFoundException(ErrorMessage.PRODUCT_WITH_SPECIFIED_ID_DOES_NOT_EXIST);
         }
-
     }
 
     @Override
     public Product updateProduct(String id, Product newProductEntity) {
-        Product oldEntity = findById(id);
-        oldEntity.setDescription(newProductEntity.getDescription());
-        oldEntity.setPrice(newProductEntity.getPrice());
-        oldEntity.setColor(newProductEntity.getColor());
-        oldEntity.setName(newProductEntity.getName());
-        oldEntity.setId(newProductEntity.getId());
-        return productRepository.save(oldEntity);
+        if (exists(id)) {
+            Product oldEntity = findById(id);
+            oldEntity.setDescription(newProductEntity.getDescription());
+            oldEntity.setPrice(newProductEntity.getPrice());
+            oldEntity.setColor(newProductEntity.getColor());
+            oldEntity.setName(newProductEntity.getName());
+            oldEntity.setId(newProductEntity.getId());
+            LOG.info("User has just modified the product with id: " + id);
+            return productRepository.save(oldEntity);
+        } else {
+            throw new ResourceNotFoundException(ErrorMessage.PRODUCT_WITH_SPECIFIED_ID_DOES_NOT_EXIST);
+        }
     }
 
     @Override
