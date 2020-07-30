@@ -1,0 +1,10 @@
+.cardClassImage{
+  max-width: 100px;
+  margin-top: 20px;
+}
+.tp-card{
+  outline-style: solid;
+}
+.error{
+  color:red;
+}

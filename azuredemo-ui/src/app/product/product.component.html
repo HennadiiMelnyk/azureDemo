@@ -1,0 +1,52 @@
+<div *ngFor="let p of pageSlice">
+
+  <mat-card class="tp-card">
+    <mat-card-title>{{p.name}}</mat-card-title>
+    <div class="cardClassImage">
+      <img mat-card-image src="https://www.tutorialspoint.com/materialize/src/html5-mini-logo.jpg" alt="Learn HTML5">
+    </div>
+    <mat-card-content>
+      <!--        <div>{{p | json}}</div>-->
+    </mat-card-content>
+  </mat-card>
+
+</div>
+<div class="productPagination">
+  <!--  <div *ngFor="let p of pageSlice">-->
+
+  <!--  </div>-->
+  <mat-paginator [length]="this.products.length" [pageSize]="3"
+                 (page)="getPaginatorData($event)"
+                 [pageSizeOptions]="[3,6,10,50]" showFirstLastButtons="true">
+
+  </mat-paginator>
+
+</div>
+<!--<div>-->
+<!--  <label>Product name</label>-->
+<!--  <input #productName />-->
+<!--  <label>Product id</label>-->
+<!--  <input #productId />-->
+
+
+<!--  <label>Product price</label>-->
+<!--  <input #productPrice />-->
+<!--  <label>Product color</label>-->
+<!--  <input #productColor />-->
+<!--  <label>Product description</label>-->
+<!--  <input #productDesc />-->
+<!--  <button (click)="addProduct(productName.value,productId.value, productPrice.value, productColor.value, productDesc.value)">Create Product</button>-->
+<!--  <button (click)="deleteProduct(productId.value)">Delete Product</button>-->
+<!--</div>-->
+<div>
+
+  <label>Product id</label>
+  <input #productId />
+  <button (click)="getProductById(productId.value)">Get Product By Id</button>
+  <div class="error">{{error| json}}</div>
+  <!--  <div class="popUp" (click)="getProductById(productId.value)">-->
+  <!--    <span class="popUpText" id="myPopUp">Id not exist</span>-->
+  <!--  </div>-->
+  <!--  <div>{{product | json}}</div>-->
+  <!--  <div>{{error | json}}</div>-->
+</div>
