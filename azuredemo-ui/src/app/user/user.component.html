@@ -1,3 +1,5 @@
 <div>
-  <button (click)="login()">Sign In</button>
+  <button class="signInBtn" (click)="login()">Sign In</button>
+  <div>{{adalService.userInfo | json}}</div>
+  <button class="SignUpBtn" (click)="navigateToSignUpPage()">Sign Up</button>
 </div>

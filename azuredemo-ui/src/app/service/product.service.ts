@@ -9,14 +9,14 @@ import {catchError} from 'rxjs/operators';
 })
 export class ProductService {
 
-  private baseUrl: string = 'http://localhost:8080/products';
+  private productsBaseUrl: string = 'http://localhost:8080/products';
 
 
   constructor(private httpClient: HttpClient) {
   }
 
   getListProducts(): Observable<any> {
-    return this.httpClient.get(this.baseUrl);
+    return this.httpClient.get(this.productsBaseUrl);
   }
 
   createProduct(product: object): Observable<any> {
@@ -24,15 +24,15 @@ export class ProductService {
   }
 
   getProductById(id: string): Observable<any> {
-    return this.httpClient.get(`${this.baseUrl}/${id}`);
+    return this.httpClient.get(`${this.productsBaseUrl}/${id}`);
   }
 
   deleteProductById(id: string): Observable<any> {
-    return this.httpClient.delete(`${this.baseUrl}/${id}`);
+    return this.httpClient.delete(`${this.productsBaseUrl}/${id}`);
   }
 
   updateProductById(id: number, product: object): Observable<any> {
-    return this.httpClient.put(`${this.baseUrl}/${id}`, product);
+    return this.httpClient.put(`${this.productsBaseUrl}/${id}`, product);
   }
 
 

@@ -1,19 +1,23 @@
 import {Injectable} from '@angular/core';
-import {HttpInterceptor, HttpEvent, HttpHandler, HttpRequest} from '@angular/common/http';
+import {HttpInterceptor, HttpEvent, HttpHandler, HttpRequest, HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {mergeMap} from 'rxjs/operators';
 import {MsAdalAngular6Service} from 'microsoft-adal-angular6';
+import {User} from '../model/User';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserAuthorizationService implements HttpInterceptor {
+export class TokenInterceptor implements HttpInterceptor {
 
-  constructor(private adal: MsAdalAngular6Service) {
+  req: HttpRequest<any>;
+
+  constructor(private adal: MsAdalAngular6Service, private httpClient: HttpClient) {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     // get api url from adal config
+    // console.log(req.headers.get('token'));
     const resource = this.adal.GetResourceForEndpoint(req.url);
     if (!resource || !this.adal.isAuthenticated) {
       return next.handle(req);
@@ -25,6 +29,7 @@ export class UserAuthorizationService implements HttpInterceptor {
         const authorizedRequest = req.clone({
           headers: req.headers.set('Authorization', `Bearer ${token}`),
         });
+        console.log(req.headers);
         return next.handle(authorizedRequest);
       }));
   }

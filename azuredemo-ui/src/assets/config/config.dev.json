@@ -1,0 +1,10 @@
+{
+  "adalConfig": {
+    "clientId": "45cd0c49-bb19-4ccf-b327-f563c1482936",
+    "tenant": "d6397071-8e3e-45d2-a2d6-36698acf0fea",
+    "cacheLocation": "localStorage",
+    "grantType": "authorization_code",
+    "redirectUri": "window.location.origin",
+    "navigateToLoginRequestUrl": "false"
+  }
+}
