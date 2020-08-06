@@ -48,6 +48,7 @@ public class ProductRest {
 
     @GetMapping("/products")
     public ResponseEntity<List<Product>> getAllProducts() {
+        final
         List<Product> list = productService.findAll();
         return ResponseEntity.ok(list);
     }

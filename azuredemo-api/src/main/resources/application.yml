@@ -1,3 +1,7 @@
+server:
+  contextPath: /
+  port: 8080
+
 spring:
   application.name: azureDemo
   datasource:
@@ -21,3 +25,18 @@ spring:
   liquibase:
     change-log: classpath:db-changelog.yml
     enabled: true
+
+
+  security:
+    oauth2:
+      client:
+        registration:
+          azure:
+            client-id: 2d468dab-bcbb-4074-8a1f-c9b40aa7291d
+            client-secret: 9DzAd-LXq7-o-0___uPy0z6Tzb.E9M~a__
+
+
+azure:
+  activedirectory:
+    active-directory-groups: Users
+    tenant-id: cc8d9e54-1f40-4753-9899-96e37c0597f8

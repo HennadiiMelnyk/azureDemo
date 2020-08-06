@@ -6,6 +6,7 @@ import com.azure.test.azureDemo.domain.UserStatus;
 import com.azure.test.azureDemo.exception.ResourceNotFoundException;
 import com.azure.test.azureDemo.persistence.UserRepository;
 import com.azure.test.azureDemo.service.UserService;
+import com.azure.test.azureDemo.utils.IdGeneratorUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,8 +24,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> getAllUsers() {
-        List<User> ls =userRepository.findAll();
-        return ls;
+        return userRepository.findAll();
     }
 
     @Override
@@ -34,6 +34,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User createUser(User userEntity) {
+        System.out.println(userEntity.toString());
+        userEntity.setId(IdGeneratorUtils.generateUUID());
         userEntity.setRole(Role.valueOf(String.valueOf(Role.User)));
         userEntity.setStatus(UserStatus.Active);
         return userRepository.save(userEntity);
